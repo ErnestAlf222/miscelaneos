@@ -37,6 +37,10 @@ class MainAppState extends ConsumerState<MainApp> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // print('State: $state');
     ref.read(appStateProvider.notifier).state = state;
+    if (state == AppLifecycleState.resumed) {
+      ref.read(permissionsProvider.notifier).checkPermissions();
+      
+    }
     super.didChangeAppLifecycleState(state);
   }
 
