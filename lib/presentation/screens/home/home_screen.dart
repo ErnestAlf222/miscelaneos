@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:miscelaneos/presentation/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,17 +8,24 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Miscelaneos'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              context.push('/permissions');
-            },
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              title: const Text('Miscelaneos'),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.settings),
+                  onPressed: () {
+                    context.push('/permissions');
+                  },
+                ),
+              ],
+            ),
+            const MainMenu()
+          ],
+        ),
       ),
     );
   }
